@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://Yug:Yug@cluster0.v05bauv.mongodb.net/
+      database: Yug

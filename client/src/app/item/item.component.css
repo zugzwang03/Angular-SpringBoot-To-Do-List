@@ -1,0 +1,11 @@
+li {
+    position: relative;
+    left: 35%;
+    font-size: 140%;
+    padding: 1%;
+}
+
+#done-task {
+    margin-left: 1%;
+    padding: 0.5%;
+}

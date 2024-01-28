@@ -1,0 +1,5 @@
+<h1 id="title">{{title}}</h1>
+<label for="new-task">Add new task: </label>
+<input id="new-task" type="text" [(ngModel)]="newTask.taskname"/> 
+<button id="add-task" (click)="addItem()"><i class="fa-solid fa-plus"></i></button>
+<app-task-list [taskList]="taskList" />

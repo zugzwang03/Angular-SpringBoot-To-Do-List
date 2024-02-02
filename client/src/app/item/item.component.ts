@@ -11,7 +11,11 @@ import { Task } from '../../../../client/src/app/task';
 })
 export class ItemComponent {
   @Input() item: Task = {
-    taskname: ""
+    id: "",
+    title: "",
+    description: "",
+    taskStatus: "",
+    date: ""
   };
   constructor(private taskListService: TaskListService) {
 
@@ -19,9 +23,14 @@ export class ItemComponent {
   removeTask() {
     var index = this.taskListService.tasks.indexOf(this.item);
     this.taskListService.tasks.splice(index, 1);
-    this.taskListService.deleteTask(this.item.taskname).subscribe(res => {
+    this.taskListService.deleteTask(this.item.id).subscribe(res =>
+      console.log(res));
+  }
+
+  taskDone() {
+    this.item.taskStatus = "Done";
+    this.taskListService.changeTaskStatus(this.item).subscribe(res => {
       console.log(res);
-    }
-    )
+    });
   }
 }

@@ -1,11 +1,18 @@
 li {
-    position: relative;
-    left: 35%;
-    font-size: 140%;
-    padding: 1%;
+  position: relative;
+  left: 35%;
+  font-size: 140%;
+  padding: 1%;
+}
+
+#delete-task {
+  background-color: rgb(227, 102, 102);
+  border: 2px solid rgb(216, 179, 179);
+  padding: 0.5%;
+  margin: 1%;
 }
 
 #done-task {
-    margin-left: 1%;
-    padding: 0.5%;
+  margin-left: 1%;
+  padding: 0.5%;
 }

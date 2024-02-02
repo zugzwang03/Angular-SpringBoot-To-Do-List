@@ -15,7 +15,10 @@ export class TaskListService {
   getTasks(): Observable<string> {
     return this.http.get<string>('http://localhost:8080/tasks');
   }
-  deleteTask(taskname: string): Observable<string> {
-    return this.http.delete<string>(`http://localhost:8080/tasks/${taskname}`)
+  deleteTask(id: String): Observable<string> {
+    return this.http.get<string>(`http://localhost:8080/tasks/delete/${id}`)
+  }
+  changeTaskStatus(item: Task): Observable<string> {
+    return this.http.put<string>(`http://localhost:8080/tasks/changeStatus`, item);
   }
 }

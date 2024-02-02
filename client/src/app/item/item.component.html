@@ -1,1 +1,10 @@
-<li>{{item.taskname}} <button id="done-task" (click)="removeTask()">Done</button></li>
+<li>
+  <p>
+    <strong>{{ item.title }}</strong>: {{ item.description }}
+  </p>
+  <p>
+    Date added: {{item.date}}
+    <button id="done-task" (click)="taskDone()">{{ item.taskStatus }}</button>
+    <button id="delete-task" (click)="removeTask()">Delete Task</button>
+  </p>
+</li>

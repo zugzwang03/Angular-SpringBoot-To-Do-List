@@ -17,17 +17,17 @@ import { Task } from './task';
 export class AppComponent implements OnInit {
   title = 'Dynamic-to-do-list';
   @Input() newTask: Task = {
-    taskname: ""
+    id: "",
+    title: "",
+    description: "",
+    taskStatus: "In Progress",
+    date: ""
   };
   taskList: Task[] = [];
-  task: Task = {
-    taskname: ""
-  };
   constructor(private taskListService: TaskListService) { }
   ngOnInit() {
     this.taskListService.getTasks().subscribe(res => {
       var taskArray = JSON.parse(JSON.stringify(res));
-      console.log(taskArray.length);
       if (taskArray.length == 0) {
 
       }
@@ -38,17 +38,28 @@ export class AppComponent implements OnInit {
     })
   }
   addItem(): void {
-    if (this.newTask.taskname == "") {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    this.newTask.date = mm + '/' + dd + '/' + yyyy;
+    console.log((this.taskList.length).toString());
+    this.newTask.id = this.taskList.length.toString();
+    if (this.newTask.title == "") {
       alert('Please enter valid task name');
       return;
     }
     this.taskListService.add(this.newTask).subscribe(res => {
-      this.task = JSON.parse(JSON.stringify(res));
-      this.taskList.push(this.task);
+      this.taskList.push(JSON.parse(JSON.stringify(res)));
       this.taskListService.tasks = this.taskList;
     });
     this.newTask = {
-      taskname: ""
+      id: "",
+      title: "",
+      description: "",
+      taskStatus: "In Progress",
+      date: ""
     };
   }
 }

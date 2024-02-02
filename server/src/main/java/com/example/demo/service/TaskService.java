@@ -1,9 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Task;
-// import com.example.demo.model.Task;
+import com.example.demo.Entity.Task;
 import com.example.demo.repository.TaskRepository;
-import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +13,10 @@ public class TaskService {
   private TaskRepository repository;
 
   public Task addTask(Task task) {
-    System.out.println(task);
     return repository.save(task);
   }
 
-  public List<Task> findAllTasks() {
+  public Iterable<Task> findAllTasks() {
     return repository.findAll();
   }
 
@@ -26,8 +24,11 @@ public class TaskService {
   //   return repository.findByTaskName(taskName);
   // }
 
-  public String deleteByTaskname(String taskname) {
-    return repository.deleteByTaskname(taskname);
+  public void deleteById(String id) {
+    repository.deleteById(id);
   }
-  
+
+  public Task changeStatus(Task task) {
+    return repository.save(task);
+  }
 }

@@ -1,3 +1,7 @@
 export interface Task {
-    taskname: string
+    id: string,
+    title: string,
+    description: string,
+    taskStatus: string
+    date: string
 };
